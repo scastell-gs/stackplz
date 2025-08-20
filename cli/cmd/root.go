@@ -25,6 +25,7 @@ import (
     "strings"
     "sync"
     "syscall"
+    "time"
 
     "github.com/spf13/cobra"
     "golang.org/x/exp/slices"
@@ -430,6 +431,19 @@ func runFunc(command *cobra.Command, args []string) {
                 }
             }
         }()
+
+        go func() {
+        	// Every 200 millis, run LetItRun() automatically
+			ticker := time.NewTicker(200 * time.Millisecond)
+			defer ticker.Stop() // important to release resources when you're done
+
+			for {
+				select {
+				case t := <-ticker.C:
+					event.LetItRun()
+				}
+			}
+		}()
 
         <-stopper
     } else {

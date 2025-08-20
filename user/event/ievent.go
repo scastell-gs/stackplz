@@ -227,7 +227,7 @@ func LetItResume(stopped_pid uint32) {
 }
 
 func LetItRun() {
-    fmt.Printf("------LetItRun------\n")
+    //fmt.Printf("------LetItRun------\n")
     for stopped_pid := range stopped_pid_list {
         err := syscall.Kill(int(stopped_pid), syscall.SIGCONT)
         if err != nil {
