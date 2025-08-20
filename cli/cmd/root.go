@@ -440,6 +440,7 @@ func runFunc(command *cobra.Command, args []string) {
 			for {
 				select {
 				case t := <-ticker.C:
+					var _ = t
 					event.LetItRun()
 				}
 			}
