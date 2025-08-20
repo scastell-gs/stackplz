@@ -239,6 +239,6 @@ func LetItRun() {
                 DelStopped(stopped_pid)
             }
         }
-        fmt.Printf("Let %d run\n", stopped_pid)
+        //fmt.Printf("Let %d run\n", stopped_pid)
     }
 }
